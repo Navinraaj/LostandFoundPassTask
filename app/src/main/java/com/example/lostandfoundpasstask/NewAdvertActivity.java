@@ -2,19 +2,25 @@
 package com.example.lostandfoundpasstask;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.lostandfoundpasstask.R;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+
+import com.google.android.material.radiobutton.MaterialRadioButton;
 
 public class NewAdvertActivity extends AppCompatActivity {
     EditText NameItem,PhoneItem,DescItem,DateItem,LocationItem;
     Button SaveItem;
-    CheckBox na_Lost,na_Found;
+    MaterialRadioButton na_Lost,na_Found;
     Database Database;
     String checkedStatus = "",item_name,item_phone,item_desc,item_date,item_location;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,20 +57,20 @@ public class NewAdvertActivity extends AppCompatActivity {
     }
 
 
-    public void onCheckBoxClicked(View v){
-        Boolean checked =((CheckBox) v).isChecked();
 
-        if(v.getId() == R.id.na_Lost){
-            if (checked){
-                checkedStatus="lost";
-                ((CheckBox)findViewById(R.id.na_Found)).setChecked(false);
-            }
-        } else if(v.getId() == R.id.na_Found) {
-            if (checked){
-                checkedStatus="found";
-                ((CheckBox)findViewById(R.id.na_Lost)).setChecked(false);
-            }
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        if (view.getId() == R.id.na_Lost) {
+            if (checked)
+                checkedStatus = "lost";
+        } else if (view.getId() == R.id.na_Found) {
+            if (checked)
+                checkedStatus = "found";
         }
+
     }
 
 

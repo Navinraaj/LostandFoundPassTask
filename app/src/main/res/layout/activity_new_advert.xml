@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,26 +15,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
+
+    <RadioGroup
+        android:id="@+id/postTypeRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/postTypeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp">
+
+    <RadioButton
         android:id="@+id/na_Lost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lost"
-        android:onClick="onCheckBoxClicked"
-        app:layout_constraintTop_toBottomOf="@+id/postTypeTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp" />
+        android:onClick="onRadioButtonClicked" />
 
-    <CheckBox
+    <RadioButton
         android:id="@+id/na_Found"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Found"
-        android:onClick="onCheckBoxClicked"
-        app:layout_constraintTop_toBottomOf="@+id/postTypeTextView"
-        app:layout_constraintStart_toEndOf="@+id/na_Lost"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp" />
+        android:onClick="onRadioButtonClicked" />
+
+    </RadioGroup>
 
     <EditText
         android:id="@+id/NameItem"
@@ -43,7 +46,7 @@
         android:layout_height="wrap_content"
         android:hint="Name"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/na_Lost"
+        app:layout_constraintTop_toBottomOf="@+id/postTypeRadioGroup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
